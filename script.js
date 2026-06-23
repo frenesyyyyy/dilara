@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const deathCountEl = document.getElementById('death-count');
     const deathMsgEl = document.getElementById('death-message');
     const wiseMessageEl = document.getElementById('wise-message');
-    const skipBtn = document.getElementById('skip-btn');
     const continueBtn = document.getElementById('continue-btn');
 
     // Level 2 Elements
@@ -228,19 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (l5AnimationFrame) cancelAnimationFrame(l5AnimationFrame);
     }
 
-    // --- Dev Skip Button ---
-    skipBtn.addEventListener('click', () => {
-        cleanupAllLevelListeners();
-        currentLevel++;
-        
-        // Force hide all screens instantly to bypass transition animations
-        document.querySelectorAll('.screen').forEach(screen => {
-            screen.classList.remove('active', 'fade-out');
-            screen.classList.add('hidden');
-        });
-        
-        startLevel(currentLevel);
-    });
 
     document.getElementById('l4-continue-btn').addEventListener('click', () => {
         const l4Screen = document.getElementById('level-4-screen');
