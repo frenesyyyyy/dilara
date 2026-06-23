@@ -1681,11 +1681,81 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.reader-screen').innerText = 'APPROVED';
         }, 8000);
 
+        // Phase 3.5: Camera & Hearts
+        setTimeout(() => {
+            document.getElementById('wallet-container').classList.add('hidden');
+            document.getElementById('card-reader').classList.add('hidden');
+            document.getElementById('finale-chris').classList.add('hidden');
+
+            const cameraScene = document.getElementById('camera-scene');
+            cameraScene.classList.remove('hidden');
+            
+            const cameraIcon = document.getElementById('camera-icon');
+            setTimeout(() => {
+                cameraIcon.style.opacity = '1';
+                cameraIcon.style.transform = 'scale(1.5)';
+            }, 100);
+
+            // Flash & Hearts
+            setTimeout(() => {
+                let flash = document.getElementById('white-flash');
+                flash.classList.remove('hidden');
+                flash.style.transition = 'none';
+                flash.style.opacity = '1';
+                
+                setTimeout(() => {
+                    flash.style.transition = 'opacity 1s ease-out';
+                    flash.style.opacity = '0';
+                    setTimeout(() => flash.classList.add('hidden'), 1000);
+                }, 100);
+
+                // Create Hearts
+                const heartsContainer = document.getElementById('hearts-container');
+                for(let i=0; i<60; i++) {
+                    let heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.className = 'love-heart';
+                    let angle = Math.random() * Math.PI * 2;
+                    let dist = Math.random() * 400 + 100;
+                    let tx = Math.cos(angle) * dist + 'px';
+                    let ty = Math.sin(angle) * dist + 'px';
+                    let scale = Math.random() * 1.5 + 0.5;
+                    heart.style.setProperty('--tx', tx);
+                    heart.style.setProperty('--ty', ty);
+                    heart.style.setProperty('--s', scale);
+                    heartsContainer.appendChild(heart);
+                }
+
+                // Show Text Note
+                document.getElementById('camera-note').style.opacity = '1';
+
+            }, 1500);
+
+        }, 9000);
+
+        // Phase 4: Final Present Reveal
         setTimeout(() => {
             const finalModal = document.getElementById('final-present-modal');
             finalModal.classList.remove('hidden');
             setTimeout(() => finalModal.classList.add('show'), 100);
-        }, 9000);
+        }, 16000);
+    }
+
+    const finalClaimBtn = document.getElementById('final-claim-btn');
+    if (finalClaimBtn) {
+        finalClaimBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Claim button clicked!');
+            document.querySelectorAll('.screen').forEach(s => {
+                s.classList.remove('active');
+                s.classList.add('hidden');
+                s.style.display = 'none';
+            });
+            const ultimateScreen = document.getElementById('ultimate-win-screen');
+            ultimateScreen.classList.remove('hidden');
+            ultimateScreen.classList.add('active');
+            ultimateScreen.style.display = 'flex';
+        });
     }
 
 });

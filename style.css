@@ -1247,3 +1247,18 @@ body.theme-l4 .eerie-btn:hover {
     .gun-container { width: 200px; height: 200px; }
     .letter-box { width: 35px; height: 50px; font-size: 2rem; }
 }
+
+/* Phase 3.5: Camera & Hearts */
+@keyframes heart-explode {
+    0% { transform: scale(0) translate(0, 0); opacity: 1; }
+    100% { transform: scale(var(--s)) translate(var(--tx), var(--ty)); opacity: 0; }
+}
+.love-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 2rem;
+    color: #ff007f;
+    pointer-events: none;
+    animation: heart-explode 2.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
