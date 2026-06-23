@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DILARA'S JOURNEY TO DEATH</title>
+    <!-- Modern digital fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=26">
+</head>
+<body>
+    <div id="particle-container"></div>
+    
+    <!-- Heads Up Display -->
+    <div id="hud" class="hidden">
+        <div class="death-counter">DEATHS: <span id="death-count">0</span></div>
+        <button id="skip-btn" class="skip-btn">SKIP LEVEL (DEV)</button>
+    </div>
+
+    <!-- Welcome Screen -->
+    <main id="welcome-screen" class="screen active">
+        <div class="welcome-card">
+            <div class="profile-pic-container">
+                <img src="dilara.PNG" alt="Dilara" class="profile-pic">
+            </div>
+            <h1 class="glitch birthday-title" data-text="HAPPY BIRTHDAY DILARA">HAPPY BIRTHDAY DILARA</h1>
+            <p class="subtitle" style="color: var(--neon-pink); font-size: 1.2rem; text-shadow: 0 0 10px var(--neon-pink); margin-bottom: 30px;">Your final gift awaits... if you can survive.</p>
+            
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-circle pulse-btn">1</div>
+                    <div class="step-text">The Truth</div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-circle pulse-btn">2</div>
+                    <div class="step-text">Survey</div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-circle pulse-btn">3</div>
+                    <div class="step-text">The Chase</div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-circle pulse-btn">4</div>
+                    <div class="step-text">Arena</div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-step">
+                    <div class="step-circle pulse-btn" style="box-shadow: 0 0 15px #ffd700;">5</div>
+                    <div class="step-text" style="color: #ffd700;">The Prize</div>
+                </div>
+            </div>
+
+            <div class="chris-note">
+                <span class="highlight">A note from Chris:</span> "I developed this, and it was hard for me to complete, but... since I'm the best it became too easy <3. Try it out. Seni çok seviyorum, iyi ki benimsin."
+            </div>
+
+            <button id="start-btn" class="neon-btn pulse-btn" style="margin-top: 40px; font-size: 1.5rem; padding: 20px 40px;">CLAIM YOUR GIFT</button>
+        </div>
+    </main>
+
+    <!-- Screen 2: The Question -->
+    <main id="question-screen" class="screen hidden">
+        <div class="timer-bar">
+            <div id="timer-progress"></div>
+        </div>
+        <div class="question-container">
+            <h2 class="neon-text">Do you love your boyfriend Chris?</h2>
+            <div class="buttons-wrapper">
+                <button id="yes-btn" class="answer-btn">YES</button>
+                <button id="no-btn" class="answer-btn">NO</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Level 2: Screen 1 -->
+    <main id="level-2-q1-screen" class="screen hidden">
+        <div class="question-container">
+            <div class="watching-text">he is watching you...</div>
+            <h2 class="neon-text l2-text">Who is the most important thing in your life?</h2>
+            <div class="grid-buttons-wrapper">
+                <button class="answer-btn l2-btn l2q1-wrong">Success</button>
+                <button class="answer-btn l2-btn l2q1-wrong">Family</button>
+                <button class="answer-btn l2-btn l2q1-wrong">Friends</button>
+                <button id="l2q1-right" class="answer-btn l2-btn">Your boyfriend</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Level 2: Screen 2 -->
+    <main id="level-2-q2-screen" class="screen hidden">
+        <div class="question-container">
+            <h2 class="neon-text l2-text" style="font-size: 2.2rem; max-width: 900px; line-height: 1.4;">
+                What would you do in this situation:<br>
+                You are walking in the street of a city and a little beautiful CUTE KITTEN follows you with legs broken
+            </h2>
+            <div class="buttons-wrapper" id="l2q2-wrapper" style="width: 800px; height: 300px;">
+                <button id="l2q2-kitten" class="answer-btn" style="font-size: 1.2rem; padding: 15px 25px;">I'd take care of it</button>
+                <button id="l2q2-boyfriend" class="answer-btn" style="font-size: 1.2rem; padding: 15px 25px;">I have to feed my boyfriend, sorry</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Level 2: FPS Screen -->
+    <main id="level-2-fps-screen" class="screen hidden fps-mode">
+        <h2 class="neon-text l3-header">Take your best choice</h2>
+        
+        <div class="targets-container">
+            <div id="target-ilayda" class="target">
+                <img src="ilayda.jpg" alt="Ilayda" />
+            </div>
+            <div id="target-chris" class="target">
+                <img src="chris.PNG" alt="Chris" />
+            </div>
+        </div>
+
+        <div id="crosshair" class="crosshair"></div>
+        
+        <div class="gun-container">
+            <img id="player-gun" src="gun.png" alt="Gun" />
+            <div id="muzzle-flash" class="hidden"></div>
+        </div>
+    </main>
+
+    <!-- Eerie Transition Screen -->
+    <main id="eerie-transition-screen" class="screen hidden">
+        <div class="transition-container">
+            <h2 id="eerie-typewriter-text" class="eerie-text"></h2>
+        </div>
+    </main>
+
+    <!-- Level 2: Screen 3 (Sister Question) -->
+    <main id="level-2-q3-screen" class="screen hidden">
+        <div class="question-container">
+            <h2 id="sister-q-text" class="neon-text" style="margin-bottom: 50px;"></h2>
+            <div class="letter-boxes" id="sister-letter-boxes">
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+            </div>
+        </div>
+    </main>
+
+    <!-- Level 2: Screen 4 (Chrispy Question) -->
+    <main id="level-2-q4-screen" class="screen hidden">
+        <div class="question-container">
+            <h2 id="chrispy-q-text" class="neon-text" style="margin-bottom: 50px;"></h2>
+            <div class="letter-boxes" id="chrispy-letter-boxes">
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+                <input type="text" maxlength="1" class="letter-box" />
+            </div>
+        </div>
+    </main>
+
+    <!-- Level 2: Screen 5 (Who is smarter) -->
+    <main id="level-2-q5-screen" class="screen hidden">
+        <div class="question-container">
+            <h2 id="smarter-q-text" class="neon-text" style="margin-bottom: 50px;"></h2>
+            <div class="buttons-wrapper">
+                <button id="smarter-dilara" class="answer-btn">DILARA</button>
+                <button id="smarter-chris" class="answer-btn">CHRIS</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Level 3: Platformer Game -->
+    <main id="level-3-screen" class="screen hidden">
+        <div id="l3-ui">
+            <h2 class="neon-text" style="font-size: 2rem;">REACH HIM</h2>
+            <p style="color: #00ffff; font-family: var(--font-heading); text-shadow: 0 0 5px #00ffff;">Arrows: Move & Jump | Down: Crawl</p>
+        </div>
+    </main>
+
+    <!-- Level 4: Boss Fight UI Overlay -->
+    <main id="level-4-screen" class="screen hidden">
+        <div id="l4-ui">
+            <div class="hp-bar-container">
+                <div class="hp-label">DILARA <span id="dilara-hp-text">100%</span></div>
+                <div class="hp-track"><div id="dilara-hp" class="hp-fill dilara-hp-fill"></div></div>
+            </div>
+            <p class="l4-controls">Arrows: Move/Aim | X: Punch</p>
+            <div class="hp-bar-container boss-hp-container">
+                <div class="hp-label"><span id="boss-hp-text">100%</span> THE BLONDE</div>
+                <div class="hp-track"><div id="boss-hp" class="hp-fill boss-hp-fill"></div></div>
+            </div>
+        </div>
+        
+        <!-- Round 2 UI -->
+        <div id="r2-ui" class="hidden" style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 20; pointer-events: none;">
+            <h1 class="glitch neon-text" data-text="ROUND 2: SURVIVE" style="font-size: 3rem; margin-bottom: 10px; color: #ff0055; text-shadow: 0 0 20px #ff0055;">ROUND 2: SURVIVE</h1>
+            <div id="r2-timer" style="font-family: 'Orbitron', sans-serif; font-size: 4rem; color: #fff; text-shadow: 0 0 20px #fff;">20.00</div>
+        </div>
+        
+    </main>
+    
+    <!-- White Flash for Transition -->
+    <div id="white-flash" class="hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #fff; z-index: 9999; pointer-events: none;"></div>
+
+    <!-- Shared Canvas -->
+    <canvas id="game-canvas" class="hidden"></canvas>
+
+    <!-- Transition Screen -->
+    <main id="result-screen" class="screen hidden">
+        <div class="message-content">
+            <p id="result-text" class="typewriter-text"></p>
+        </div>
+    </main>
+
+    <!-- Level 3 Victory Animation Screen -->
+    <main id="final-victory-screen" class="screen hidden">
+        <div class="sunset-background"></div>
+        <div id="runaway-container" class="runaway-container hidden">
+            <img src="chris.PNG" alt="Chris" class="runaway-chris" />
+            <img src="dilara.PNG" alt="Dilara" class="runaway-dilara" />
+        </div>
+        <h1 id="victory-text" class="glitch victory-text" data-text="YOU GOT HIM" style="font-size: 5rem; top: 20%; text-align: center; width: 100%; position: absolute;">YOU GOT HIM</h1>
+    </main>
+
+    <!-- Level 4 Intro Screen -->
+    <main id="l4-intro-screen" class="screen hidden">
+        <div class="intro-content">
+            <h1 class="glitch l4-glitch" data-text="A NEW CHALLENGER">A NEW CHALLENGER</h1>
+            <p id="l4-intro-text" class="typewriter-text eerie-blue"></p>
+            <button id="l4-continue-btn" class="hidden eerie-btn pulse-btn">FIGHT!</button>
+        </div>
+    </main>
+
+    <!-- Level 5 Intro Screen -->
+    <main id="l5-intro-screen" class="screen hidden">
+        <div class="intro-content">
+            <p id="l5-intro-text" class="typewriter-text eerie-blue" style="font-size: 2rem;"></p>
+        </div>
+    </main>
+
+    <!-- Level 5: Flashlight Maze UI Overlay -->
+    <main id="level-5-screen" class="screen hidden">
+        <div class="l5-ui">
+            <h2 class="neon-text" style="text-shadow: 0 0 10px #fff;">Find the chest...</h2>
+            <p>Arrows to move | X to interact</p>
+        </div>
+    </main>
+
+    <!-- Grand Finale: Payment Animation -->
+    <main id="payment-finale-screen" class="screen hidden">
+        <div class="payment-stage">
+            <!-- Phase 1: Chris -->
+            <img src="chris.PNG" alt="Chris" class="finale-chris hidden" id="finale-chris" />
+            
+            <!-- Phase 2: Wallet & Card -->
+            <div class="wallet-container hidden" id="wallet-container">
+                <div class="wallet-body"></div>
+                <div class="wallet-flap"></div>
+                <div class="credit-card">
+                    <div class="card-chip"></div>
+                    <div class="card-logo">DILARA</div>
+                </div>
+            </div>
+
+            <!-- Phase 3: Card Reader -->
+            <div class="card-reader hidden" id="card-reader">
+                <div class="reader-screen">PAYING...</div>
+                <div class="reader-slot"></div>
+            </div>
+
+            <!-- Phase 4: Final Present Reveal -->
+            <div class="final-present-modal hidden" id="final-present-modal">
+                <div class="glass-card">
+                    <h1 class="neon-text">A BEAUTIFUL PRICE</h1>
+                    <div class="present-image-container">
+                        <!-- User will insert actual image src here -->
+                        <img src="placeholder.jpg" alt="Present" id="present-image" />
+                    </div>
+                    <!-- User will insert actual href here -->
+                    <a href="#" target="_blank" class="cyber-btn claim-btn">CLAIM YOUR PRIZE</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Screen: Death Screen -->
+    <main id="death-screen" class="screen hidden">
+        <div class="death-overlay"></div>
+        <h1 class="glitch-death" data-text="YOU DIED">YOU DIED</h1>
+        <p id="death-message" class="death-msg"></p>
+    </main>
+
+    <!-- Screen 4: Transition Screen -->
+    <main id="transition-screen" class="screen hidden">
+        <div class="transition-container">
+            <h2 class="eerie-text">
+                You know your boyfriend enough to just reply this survey,<br>
+                <span class="scary-right">RIGHT?</span>
+            </h2>
+            <button id="continue-btn" class="cyber-btn continue-fade">CONTINUE</button>
+        </div>
+    </main>
+
+    <script src="script.js?v=26"></script>
+</body>
+</html>

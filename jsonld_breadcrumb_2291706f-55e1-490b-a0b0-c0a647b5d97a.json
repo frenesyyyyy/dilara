@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Bebit",
+      "item": "https://bebit.it"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Financial Professional Ymyl",
+      "item": "https://bebit.it/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Contact",
+      "item": "https://bebit.it/contact"
+    }
+  ]
+}

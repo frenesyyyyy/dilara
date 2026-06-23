@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Bebit offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "[Replace with a direct, factual description of Bebit's core services.]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Bebit located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bebit is located in Unknown, IT. [Add full address for local SEO.]"
+      }
+    }
+  ]
+}
